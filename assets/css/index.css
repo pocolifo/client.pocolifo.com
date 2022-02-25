@@ -1,0 +1,268 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;800&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300;1,700&family=Roboto+Condensed:wght@300&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Lato:ital,wght@1,300&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,900;1,300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,900;1,300&display=swap');
+
+:root {
+    --download-background: linear-gradient(110deg, #0099ffff, #bb00ffff);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    scroll-behavior: smooth;
+
+    outline: none;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #212121;
+}
+
+p, a {
+    font-weight: 300;
+}
+
+nav {
+    z-index: 100000;
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    
+    align-items: center;
+    font-size: 25px;
+    font-weight: 300;
+    color: #eeeeee;
+}
+
+nav .nav-content {
+    margin: 26px 15%;
+    width: 100%;
+
+    display: flex;
+}
+
+nav .nav-content div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-content div a {
+    color: #eeeeee;
+    text-decoration: none;
+
+    transition: 0.25s text-shadow;
+}
+
+nav .nav-content div a:hover {
+    text-shadow: 0px 0px 10px #eeeeee;
+}
+
+nav .nav-content .logo {
+    margin-right: 12px;
+}
+
+nav .nav-content div.left {
+    text-align: left;
+    justify-content: left;
+}
+
+nav .nav-content div.right {
+    text-align: right;
+    justify-content: right;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+}
+
+header .background-image {
+    z-index: -100000;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+
+    filter: brightness(40%);
+
+    animation: fade-in 1s linear;
+}
+
+header .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #eeeeee;
+    font-size: 2em;
+    text-align: center;
+}
+
+.expand {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+
+    animation: move-up-down 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    padding: 20px;
+}
+
+section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    background: #212121;
+    color: #eeeeee;
+
+    text-align: center;
+}
+
+section .text h1 {
+    font-size: 3em;
+}
+
+section .text p {
+    font-size: 1.5em;
+}
+
+section .text {
+    padding-left: 15%;
+    padding-right: 15%;
+    margin-bottom: 24px;
+}
+
+section img {
+    width: 65vw;
+
+    border-radius: 15px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.download-button {
+    background: var(--download-background);
+
+    font-family: 'Lato', sans-serif;
+    color: #eeeeee;
+
+    padding: 32px 72px;
+
+    border: none;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 1.75em;
+
+    margin-top: 40px;
+    margin-bottom: 100px;
+    max-width: 75%;
+    transition: 0.2s;
+    z-index: 5;
+}
+
+.download-button:hover {
+    cursor: pointer;    
+    transform: scale(1.1);
+}
+
+.download-button:active {
+    transform: scale(0.9);
+}
+
+
+footer {
+    background: #181818;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    padding-left: 15%;
+    padding-right: 15%;
+
+    display: flex;
+    align-items: center;
+}
+
+footer * {
+    color: #eeeeee;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+footer div {
+    width: 100%;
+}
+
+footer div.right {
+    text-align: right;
+    justify-content: right;
+}
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes move-up-down {
+    50% {
+        margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    section img {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav .nav-content {
+        margin: 0;
+        padding: 23px 0;
+    }
+
+    nav .nav-content div.left {
+        text-align: center;
+        justify-content: center;
+        width: 100vw;
+    }
+
+    nav div.right {
+        width: 0px;
+        display: none;
+    }
+
+    footer {
+        display: grid;
+        gap: 16px;
+        text-align: center;
+    }
+
+    footer div.right {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    section img {
+        border-radius: 0px;
+        width: 100vw;
+    }
+}
