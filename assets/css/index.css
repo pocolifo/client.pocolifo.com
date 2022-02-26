@@ -7,6 +7,7 @@
 
 :root {
     --download-background: linear-gradient(110deg, #0099ffff, #bb00ffff);
+    --loader-background: #5c5c5c;
 }
 
 * {
@@ -91,9 +92,25 @@ header .background-image {
     width: 100vw;
     height: 100vh;
 
-    filter: brightness(40%);
+    filter: brightness(50%);
+    opacity: 0;
+}
 
-    animation: fade-in 1s linear;
+header .background-image-loader {
+    width: 100%;
+    height: 100vh;
+    transition: 1s ease-out;
+
+    animation: loading-in 3s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+header .background-image-loader.loaded {
+    animation: none;
+}
+
+header .background-image.loaded {
+    opacity: 1;
+    animation: fade-in 3s linear;
 }
 
 header .text {
@@ -115,6 +132,14 @@ header .text {
 
     animation: move-up-down 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
     padding: 20px;
+}
+
+.expand svg {
+    transition: 0.3s fill;
+}
+
+.expand:hover svg {
+    fill: #777777;
 }
 
 section {
@@ -141,6 +166,10 @@ section .text {
     margin-bottom: 24px;
 }
 
+section .text a {
+    color: #eeeeee;
+}
+
 section img {
     width: 65vw;
 
@@ -148,6 +177,14 @@ section img {
 
     margin-left: auto;
     margin-right: auto;
+
+    box-shadow: 0 0 12px #eeeeee;
+
+    transition: transform 0.75s ease;
+}
+
+section img:hover {
+    transform: scale(1.1);
 }
 
 .download-button {
@@ -168,6 +205,8 @@ section img {
     max-width: 75%;
     transition: 0.2s;
     z-index: 5;
+    
+    box-shadow: 0 0 24px #777777;
 }
 
 .download-button:hover {
@@ -216,6 +255,20 @@ footer div.right {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes loading-in {
+    0% {
+        background: transparent;
+    }
+
+    50% {
+        background: var(--loader-background);
+    }
+
+    100% {
+        background: transparent;
     }
 }
 
