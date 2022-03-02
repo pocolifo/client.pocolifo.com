@@ -14,12 +14,15 @@
     <nav>
         <div class="nav-content">
             <div class="left">
-                <img src="assets/img/logo/svg/logo.svg" alt="Pocolifo Client logo" width="48" height="48" class="logo" />
-                <p>Pocolifo Client</p>
+                <div class="element">
+                    <img src="assets/img/logo/svg/logo.svg" alt="Pocolifo Client logo" width="48" height="48" class="logo" />
+                    <p>Pocolifo Client</p>
+                </div>
             </div>
     
             <div class="right">
-                <a href="/download" class="download" target="_blank">Download</a>
+                <a href="#download" class="download element">Download</a>
+                <a href="https://discord.gg/bq9k6P73dr" class="element" target="_blank">Discord</a>
             </div>
         </div>
     </nav>
@@ -88,14 +91,25 @@
             <img src="assets/img/section/developed-diligently.png" alt="Source code" loading="lazy" />
         </section>
 
-        <section>
+        <section id="download">
             <div class="text">
                 <h1>Don't miss out</h1>
                 <p>Unlock all of Pocolifo Client's power for the low, low cost of free.</p>
             </div>
 
-            <a href="/download" target="_blank">
-                <button class="download-button">Download the Installer (Java)</button>
+            <a class="download-link" target="_blank">
+                <button class="download-button">Loading...</button>
+            </a>
+        </section>
+
+        <section>
+            <div class="text">
+                <h1>Stay in the know</h1>
+                <p>Stay up to date by joining our Discord.</p>
+            </div>
+
+            <a href="https://discord.gg/bq9k6P73dr" target="_blank">
+                <button class="download-button">Join the Discord</button>
             </a>
         </section>
     </main>

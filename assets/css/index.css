@@ -1,8 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;800&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300;1,700&family=Roboto+Condensed:wght@300&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Lato:ital,wght@1,300&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,900;1,300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,900;1,300&display=swap');
 
 :root {
@@ -53,6 +48,10 @@ nav .nav-content div {
     align-items: center;
 }
 
+nav .nav-content div .element {
+    margin-left: 24px;
+}
+
 nav .nav-content div a {
     color: #eeeeee;
     text-decoration: none;
@@ -101,7 +100,7 @@ header .background-image-loader {
     height: 100vh;
     transition: 1s ease-out;
 
-    animation: loading-in 3s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    animation: loading-in 3s cubic-bezier(0.37, 0, 0.63, 1) infinite 1s;
 }
 
 header .background-image-loader.loaded {
@@ -294,6 +293,12 @@ footer div.right {
         text-align: center;
         justify-content: center;
         width: 100vw;
+    }
+
+    nav .nav-content div.left .element {
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
     }
 
     nav div.right {
