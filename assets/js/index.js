@@ -8,6 +8,14 @@ const NAV_LOGO = NAV.querySelector('.logo');
 const DOWNLOAD_BUTTON = document.querySelector('.download-button');
 const DOWNLOAD_LINK = document.querySelector('.download-link');
 
+const COUNTDOWN_TEXT = document.querySelector('.countdown-text');
+const COUNTDOWN_DATE = new Date("Mar 27, 2022 17:00:00 EST");
+
+const ONE_SECOND = 1000;
+const ONE_MINUTE = ONE_SECOND * 60;
+const ONE_HOUR = ONE_MINUTE * 60;
+const ONE_DAY = ONE_HOUR * 24;
+
 async function getLatestReleaseDownloadUrl() {
     let result = await (await fetch('https://api.github.com/repos/pocolifo/client.pocolifo.com/releases/latest')).json();
 
@@ -20,6 +28,42 @@ async function getLatestReleaseDownloadUrl() {
     }
 
     return null;
+}
+
+function updateCountdown() {
+    let timeUntilRelease = COUNTDOWN_DATE.getTime() - Date.now();
+
+    if (timeUntilRelease > 0) {
+        let dayCount = timeUntilRelease / ONE_DAY;
+        let hourCount = (timeUntilRelease % ONE_DAY) / ONE_HOUR;
+        let minuteCount = (timeUntilRelease % ONE_HOUR) / ONE_MINUTE;
+        let secondCount = (timeUntilRelease % ONE_MINUTE) / ONE_SECOND;
+
+        dayCount = Math.floor(dayCount).toString();
+        hourCount = Math.floor(hourCount).toString();
+        minuteCount = Math.floor(minuteCount).toString();
+        secondCount = Math.floor(secondCount).toString();
+
+        if (2 > dayCount.length) {
+            dayCount = `0${dayCount}`;
+        }
+
+        if (2 > hourCount.length) {
+            hourCount = `0${hourCount}`;
+        }
+
+        if (2 > minuteCount.length) {
+            minuteCount = `0${minuteCount}`;
+        }
+
+        if (2 > secondCount.length) {
+            secondCount = `0${secondCount}`;
+        }
+
+        COUNTDOWN_TEXT.textContent = `${dayCount}:${hourCount}:${minuteCount}:${secondCount}`;
+    } else {
+        COUNTDOWN_TEXT.textContent = "Released! 🥳";
+    }
 }
 
 document.addEventListener('scroll', e => {
@@ -51,5 +95,8 @@ window.addEventListener('load', e => {
         });
 
         clearTimeout(timeout);
-    }, 500)
+    }, 500);
+
+    updateCountdown();
+    setInterval(updateCountdown, ONE_SECOND);
 });
