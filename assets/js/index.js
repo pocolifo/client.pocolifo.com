@@ -9,7 +9,7 @@ const DOWNLOAD_BUTTON = document.querySelector('.download-button');
 const DOWNLOAD_LINK = document.querySelector('.download-link');
 
 const COUNTDOWN_TEXT = document.querySelector('.countdown-text');
-const COUNTDOWN_DATE = new Date("Mar 27, 2022 17:15:00 GMT-0400");
+const COUNTDOWN_DATE = new Date("Mar 27, 2022 17:08:00 GMT-0400");
 var COUNTDOWN_INTERVAL = null;
 
 const ONE_SECOND = 1000;
