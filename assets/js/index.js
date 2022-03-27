@@ -9,7 +9,8 @@ const DOWNLOAD_BUTTON = document.querySelector('.download-button');
 const DOWNLOAD_LINK = document.querySelector('.download-link');
 
 const COUNTDOWN_TEXT = document.querySelector('.countdown-text');
-const COUNTDOWN_DATE = new Date("Mar 27, 2022 17:00:00 EST");
+const COUNTDOWN_DATE = new Date("Mar 27, 2022 17:15:00 GMT-0400");
+var COUNTDOWN_INTERVAL = null;
 
 const ONE_SECOND = 1000;
 const ONE_MINUTE = ONE_SECOND * 60;
@@ -62,7 +63,22 @@ function updateCountdown() {
 
         COUNTDOWN_TEXT.textContent = `${dayCount}:${hourCount}:${minuteCount}:${secondCount}`;
     } else {
+        clearInterval(COUNTDOWN_INTERVAL);
         COUNTDOWN_TEXT.textContent = "Released! 🥳";
+        
+        var checkForDownload = setInterval(() => {
+            new Promise((resolve, reject) => {
+                resolve(getLatestReleaseDownloadUrl());
+            }).then(url => {
+                if (url == null) {
+                    DOWNLOAD_BUTTON.textContent = "Download coming soon!";
+                } else {
+                    clearInterval(checkForDownload);
+                    DOWNLOAD_BUTTON.textContent = "Download Installer (Java 8)";
+                    DOWNLOAD_LINK.href = url;
+                }
+            });
+        }, 5000);
     }
 }
 
@@ -97,6 +113,5 @@ window.addEventListener('load', e => {
         clearTimeout(timeout);
     }, 500);
 
-    updateCountdown();
-    setInterval(updateCountdown, ONE_SECOND);
+    COUNTDOWN_INTERVAL = setInterval(updateCountdown, ONE_SECOND);
 });

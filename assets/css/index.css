@@ -290,6 +290,10 @@ footer div.right {
     section img {
         width: 90vw;
     }
+
+    .countdown-text {
+        font-size: 4em;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -325,11 +329,19 @@ footer div.right {
         text-align: center;
         justify-content: center;
     }
+
+    .countdown-text {
+        font-size: 3.5em;
+    }
 }
 
 @media screen and (max-width: 450px) {
     section img {
         border-radius: 0px;
         width: 100vw;
+    }
+    
+    .countdown-text {
+        font-size: 2.5em;
     }
 }
